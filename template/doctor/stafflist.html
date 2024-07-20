@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        table {
+            width: 30%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 18px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Staff</h1>
+    <form>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Operations</th>
+                </tr>
+            </thead>
+            {% for m in meds %}
+                <tbody>
+                    <tr>
+                        <th scope="row">{{ m.id }}</th>
+                        <td>{{ m.username }}</td>
+                        <td>{{ m.staffposition.job }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{% url 'updatestaff' m.id %}" role="button">Update</a>
+                            <a class="btn btn-primary" href="{% url 'deletestaff' m.id %}" role="button">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </form>
+    <!-- Add any additional content or buttons here -->
+</body>
+</html>

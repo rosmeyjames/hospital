@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Bookings</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>User</th>
+                <th>BookingDate</th>
+                <th>ConsutationDate</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in Bookings %}
+            <tr>
+                <form method="POST" action="{% url 'bookingapproval' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <td><input  type="number" name="bookingid" value="{{ book.id }}"></td>
+                <td><input type="text" name="username" value="{{ book.user.username }}"></td>
+                <td><input type="date"  name="bkdate" value="{{ book.date|date:'Y-m-d' }}"></td>
+                <td><input type="datetime-local" name="cons_date" placeholder="date for consultation"></td>
+<!--                <td><button value="submit"></button></td>-->
+<!--                <a class="btn-btn-primary" href="{% url 'bookingapproval'  %}" type="button">submit</a>-->
+
+
+<!--                <td>-->
+<!--                    <table>-->
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                <th>Item ID</th>-->
+<!--                                <th>Item Name</th>-->
+<!--                                <th>Quantity</th>-->
+<!--                                <th>Price</th>-->
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                            {% for item in Booking_items %}-->
+<!--                            {% if item.booking.id == booking.id %}-->
+<!--                            <tr>-->
+<!--                                <td>{{ item.booking.id }}</td>-->
+<!--                                <td>{{ item.name }}</td>-->
+
+<!--                                <td>{{ item.price }}</td>-->
+
+<!--                            {% endif %}-->
+<!--                            {% endfor %}-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+ <td><button type="submit">Submit</button></td>
+
+        </form>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

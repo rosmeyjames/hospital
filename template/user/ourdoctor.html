@@ -1,0 +1,146 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--{% for msg in messages %}-->
+<!--   <script>-->
+<!--    window.alert('{{ msg }}')-->
+<!--   </script>-->
+<!--   {% endfor %}-->
+<!--{% for message in messages %}-->
+<!--{{ message }}-->
+<!--{% endfor %}-->
+<!--<body>-->
+<!--<form method="POST" enctype="multipart/form-data">-->
+<!--    {% csrf_token %}-->
+
+<!--{% for doc in doctor %}-->
+<!--    <div class="col-md-6">-->
+<!--<div class="card" style="width: 18rem;">-->
+<!--  <img class="card-img-top" src="{{ doc.docimage.url }}" alt="Card image cap">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">{{ doc.docname }}</h5>-->
+<!--    <p class="card-text">{{ doc.docdepartment}}</p>-->
+<!--      <p class="card-text">{{ doc.workingtime }}</p>-->
+
+<!--    <a href="{% url 'createbooking' doc.id %}" class="btn btn-primary">Booking</a>-->
+<!--  </div>-->
+<!--</div></div></form>-->
+<!--{% endfor %}-->
+<!--</body>-->
+<!--<body>-->
+
+<!--    <form enctype="multipart/form-data"style="align:center;">-->
+<!--        <h1 style="text-align:center;">OurDoctors</h1>-->
+<!--&lt;!&ndash;        {% csrf_token %}&ndash;&gt;-->
+<!--        <div class="row">-->
+<!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+<!--             {% for doc in doctor %}-->
+<!--                <div class="col-md-4 ">-->
+
+<!--                    <div class="card"style="padding:2cm;">-->
+<!--                        <img class="card-img-top" src="{{ doc.docimage.url }}" alt="Card image cap"style='width:4cm;'>-->
+<!--                        <div class="card-body">-->
+<!--                            <h5 class="card-title">{{ doc.docname }}</h5>-->
+<!--                            <p class="card-text">{{ doc.docdepartment }}</p>-->
+<!--                            <p class="card-text">{{ doc.workingtime }}</p>-->
+<!--                            <a href="{% url 'createbooking' doc.id %}" class="btn btn-primary">Booking</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--{% endfor %}-->
+<!--        </div>-->
+<!--    </form>-->
+
+<!--</body>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Doctors</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .col-md-4 {
+            flex: 0 0 33.33%;
+            padding: 1rem;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-top {
+            width: 50%;
+            height: auto;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .card-body {
+            padding: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Our Doctors</h1>
+    <div class="row">
+        {% for doc in doctor %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="{{ doc.docimage.url }}" alt="Doctor Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ doc.docname }}</h5>
+                        <p class="card-text">{{ doc.docdepartment }}</p>
+                        <p class="card-text">{{ doc.workingtime }}</p>
+                        <a href="{% url 'createbooking' doc.id %}" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+</html>

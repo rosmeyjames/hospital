@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Form</title>
+    <style>
+        /* Add the CSS styles here */
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+            border-color: #555;
+            outline: none;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        textarea {
+            resize: vertical; /* Allow vertical resize only */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token  %}
+            <h1>PrescriptionForm</h1>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Name</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Medicine</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="medicine">
+                    {% for m in meds %}
+                    <option value="{{ m.pk }}">{{ m.name }}</option>
+                    {% endfor %}
+
+<!--                    <option>2</option>-->
+<!--                    <option>3</option>-->
+<!--                    <option>4</option>-->
+<!--                    <option>5</option>-->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Name</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput2">Number</label>
+                <input type="text" class="form-control" id="exampleFormControlInput2" name="number" placeholder="Enter number">
+            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="exampleFormControlSelect2">Example multiple select</label>-->
+<!--                <select multiple class="form-control" id="exampleFormControlSelect2" name="medicine2">-->
+<!--                    <option>1</option>-->
+<!--                    <option>2</option>-->
+<!--                    <option>3</option>-->
+<!--                    <option>4</option>-->
+<!--                    <option>5</option>-->
+<!--                </select>-->
+<!--            </div>-->
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Descriptions</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="details" ></textarea>
+            </div>
+            <div class="form-group">
+            <button type="submit">Submit</button> &nbsp;<a href="{% url 'createmedicine' %}" class="btn btn-primary">Ceate Medicine</a>&nbsp; <a href="{% url 'medicinelist' %}" class="btn btn-primary">view</a>
+            </div>
+        </form>
+    </div>
+<!--                            <a href="{% url 'createmedicine' %}" class="btn btn-primary">Ceate Medicine</a>-->
+
+</body>
+</html>

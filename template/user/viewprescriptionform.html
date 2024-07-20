@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* Add your custom styles here */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <h1>PrescriptionForm</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Medicine</th>
+            <th>Descriptions</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>{{ medications.presc_name.name }}</td>
+            <td>{{ medications.presc_med.name }}</td>
+            <td>{{ medications.presc_det }}</td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

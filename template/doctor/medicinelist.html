@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>medicinelist</title>
+<style>
+    table {
+    width: 30%;
+    text-align:center;
+
+    margin-left: auto;
+    margin-right: auto;
+    font-size:18px;
+}</style>
+    <h1 style="text-align:center;">MEDICINE</h1>
+</head>
+<body>
+<form >
+<!--    {% csrf_token %}-->
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+        <th scope="col">operations</th>
+
+    </tr>
+  </thead>
+         {% for m in meds %}
+  <tbody>
+    <tr>
+      <th scope="row">{{ m.id }}</th>
+      <td>{{ m.name }}</td><td>{{ m.company }}</td>
+      <td>{{ m.price }}</td>
+        <td><a class="btn btn-primary" href="{% url 'updatemedicine' m.id  %}" role="button">update</a>
+            <a class="btn btn-primary" href="{% url 'deletemedicine' m.id %}" role="button">delete</a>
+    </td>
+    </tr>
+
+  </tbody>
+{% endfor %}
+<a class="btn btn-primary" href="{% url 'createmedicine' %}" role="button" style="padding:25cm;">ADDMEDICINE</a>
+</table>
+
+</form></br></br>
+
+<!--<a class="btn btn-primary" href="{% url 'createmedicine' %}" role="button" style="padding:15cm;">ADDMEDICINE</a>-->
+</body>
+</html>

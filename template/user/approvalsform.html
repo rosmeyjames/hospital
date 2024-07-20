@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Approval</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Consultation Date</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>{{ approvals.user.name }}</td>
+                <td>{{ approvals.cnsultdate }}</td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

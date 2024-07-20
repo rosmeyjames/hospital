@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for msg in messages %}
+{{ msg }}
+{% endfor %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1 >Daganosiis Result</h1>
+    {{form.as_p}}
+    <button type="submit">submit</button>
+    <a class="btn btn-primary" href="{% url 'labtest' %}" role="button" >create</a>
+
+</form>
+</body>
+</html>

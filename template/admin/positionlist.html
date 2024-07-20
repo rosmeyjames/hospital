@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list of positions</title>
+    <style>
+    table {
+    width: 30%;
+    text-align:center;
+
+    margin-left: auto;
+    margin-right: auto;
+    font-size:18px;
+}</style>
+    <h1 style="text-align:center;">list of positions</h1>
+</head>
+</head>
+<body>
+<form   method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Position</th>
+
+
+    </tr>
+  </thead>
+         {% for m in meds %}
+  <tbody>
+    <tr>
+      <th scope="row">{{ m.id }}</th>
+      <td>{{ m.job }}</td>
+
+<td><a class="btn btn-primary" href="{% url 'deleteposition' m.id %}" role="button" >delete</a>
+    <td><a class="btn btn-primary" href="{% url 'updateposition' m.id %}" role="button" >update</a>
+
+</td>
+    </tr>
+
+  </tbody>
+{% endfor %}
+<a class="btn btn-primary" href="{% url 'createposition' %}" role="button" style="padding:22cm;">CREATEPOSITION</a>
+
+    </table>
+
+</form>
+
+</body>
+</html>

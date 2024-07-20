@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Styled Schedule Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+{% for msg in messages %}
+{{ msg }}
+{% endfor %}
+<body>
+    <h1>Schedule Form</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Working Time</th>
+                    <th>Tickets</th>
+                    <th>Operations</th>
+                </tr>
+            </thead>
+            {% for schd in sch %}
+            <tbody>
+                <tr>
+                    <td><img src="{{ schd.docimage.url }}" alt="Doctor Image"></td>
+                    <td>{{ schd.docname }}</td>
+                    <td>{{ schd.docdepartment }}</td>
+                    <td>{{ schd.workingtime }}</td>
+                    <td>{{ schd.numoftickets }}</td>
+                    <td>
+                        <a class="btn-primary" href="{% url 'updateschedule' schd.id %}" type="button">Update</a>
+                        <a class="btn-primary" href="{% url 'deleteschedule' schd.id %}" type="button">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+</html>

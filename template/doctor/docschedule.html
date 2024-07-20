@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{%for msg in messages %}
+{{ msg }}
+{% endfor %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">submit</button>
+
+    {% for schd in sch %}
+
+    <table class="table">
+  <thead>
+    <tr>
+        <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Department</th>
+      <th scope="col">Workingtime</th>
+      <th scope="col">Tickets</th>
+        <th scope="col">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <th scope="row"><img src="{{ schd.docimage.url }}"></th>
+        <td>{{ schd.docname }}</td>
+
+      <td>{{ schd.docdepartment }}</td>
+      <td>{{ schd.workingtime }}</td>
+
+      <td>{{ schd.numoftickets }}</td>
+        <td><a class="btn-btn-primary" href="{% url 'updateschedule' schd.id %}" type="button">Update</a>
+            <a class="btn-btn-primary" href="{% url 'deleteschedule' schd.id %}"type="button">Delete</a>
+        </td>
+    </tr>
+
+  </tbody>
+</table>
+    {% endfor %}
+
+</form>
+
+</body>
+</html>

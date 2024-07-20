@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Checkout Form</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Medicine</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>{{ medications.presc_name.name }}</td>
+                <td>{{ medications.presc_med.name }}</td>
+                <td>{{ medications.presc_med.price }}</td>
+                <td>{{ meds }}</td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>Lab Test:</strong> {{ diag.test.testname }} (Price: {{ diag.test.price }})</td>
+            </tr>
+            <tr>
+                <td colspan="4"><strong>Ticket Charge:</strong> {{ ticketcharge }}</td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong>Total:</strong></td>
+                <td>{{ total }}</td>
+            </tr>
+        </table>
+        <a class="btn" href="{% url 'checkout' %}" type="button">Checkout</a>
+    </form>
+</body>
+</html>
